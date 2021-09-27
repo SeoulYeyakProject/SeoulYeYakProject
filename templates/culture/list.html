@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서울 공공서비스</title>
+    <script>
+        function getFree(e){
+            if(e.target.checked){
+                location.href = "/cul/free"
+                id.checked=true
+            }
+            else{
+                location.href = "/cul/list"
+                id.checked=false
+            }
+        }
+
+        function getOngoing(e){
+            if(e.target.checked){
+                location.href = "/cul/ongoing"
+                id.checked=true
+            }
+            else{
+                location.href = "/cul/list"
+                id.checked=false
+            }
+        }
+
+        function search(){
+            keyword.val()
+        }
+
+    </script>
+</head>
+<body>
+<h3>서울시 문화행사</h3>
+<input type="checkbox" id="free" onclick="getFree(event)" >무료<br/>
+<input type="checkbox" id="ongoing" onclick="getOngoing(event)" >접수중<br/>
+<form action="/cul/search" method="post">
+    <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요">
+    <input type="submit" value="검색" >
+</form>
+
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>분류</th>
+        <th>상태</th>
+        <th>행사명</th>
+        <th>이용요금</th>
+        <th>행사장소</th>
+        <th>이용대상</th>
+        <th>이미지</th>
+    </tr>
+    {%for c in culList%}
+    <tr>
+        <th>{{loop.index}}</th>
+        <th>{{c.minClassNm}}</th>
+        <th>{{c.svcStateNm}}</th>
+        <th><a href={{c.svcUrl}}>{{c.svcNm}}</a></th>
+        <th>{{c.payAtNm}}</th>
+        <th>{{c.placeNm}}</th>
+        <th>{{c.useTgtInfo}}</th>
+        <th><img src={{c.imgUrl}} height="30px", width="30px"></th>
+    </tr>
+    {%endfor%}
+</table>
+</body>
+</html>

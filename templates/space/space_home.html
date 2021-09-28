@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>공간 대여 </h3>
+
+<form action="/space/search" method="POST">
+    <input type="text" id="userSearch" name="userSearch" placeholder="검색어 입력">
+    <input type="submit" value="검색" >
+</form>
+
+<br>
+<label for="area">지역 검색</label>
+<form action="/space/AreaSearch" method="POST">
+    <select name="area" id="area">
+        <option value="">원하는 지역을 고르세요</option>
+        <option value="종로구">종로구</option>
+        <option value="중구">중구</option>
+        <option value="용산구">용산구</option>
+        <option value="성동구">성동구</option>
+        <option value="광진구">광진구</option>
+        <option value="동대문구">동대문구</option>
+        <option value="중랑구">중랑구</option>
+        <option value="성북구">성북구</option>
+        <option value="강북구">강북구</option>
+        <option value="도봉구">도봉구</option>
+        <option value="노원구">노원구</option>
+        <option value="은평구">은평구</option>
+        <option value="서대문구">서대문구</option>
+        <option value="마포구">마포구</option>
+        <option value="양천구">양천구</option>
+        <option value="강서구">강서구</option>
+        <option value="구로구">구로구</option>
+        <option value="금천구">금천구</option>
+        <option value="영등포구">영등포구</option>
+        <option value="동작구">동작구</option>
+        <option value="관악구">관악구</option>
+        <option value="서초구">서초구</option>
+        <option value="강남구">강남구</option>
+        <option value="송파구">송파구</option>
+        <option value="강동구">강동구</option>
+    </select>
+
+     <input type="submit" value="검색" >
+</form>
+
+<form action="/space/spaceType" method="POST">
+    <select name="type" id="type">
+        <option value="">장소 종류</option>
+        <option value="캠핑장">캠핑장</option>
+        <option value="다목적실">다목적실</option>
+        <option value="강의실">강의실</option>
+        <option value="강당">강당</option>
+        <option value="회의실">회의실</option>
+        <option value="주민공유공간">주민공유공간</option>
+        <option value="공연장">공연장</option>
+        <option value="녹화장소">녹화장소</option>
+         <option value="전시실">전시실</option>
+        <option value="광장">광장</option>
+        <option value="민원 등 기타">민원 등 기타</option>
+    </select>
+
+     <input type="submit" value="검색" >
+</form>
+<br>
+
+<table border="1">
+
+    <tr>
+        <th>접수 상태</th>
+        <th>장소 종류</th>
+        <th>이름</th>
+        <th>지역</th>
+        <th>접수 시작 일시</th>
+        <th>접수 종료 일시</th>
+        <th>전화번호</th>
+        <th>결제 방법</th>
+        <th>서비스이용 시작시간</th>
+        <th>서비스이용 종료시간</th>
+        <th>이미지</th>
+        <th>링크</th>
+    </tr>
+
+ {%for s in spaceList%}
+    <tr>
+
+        <td>{{s.svcstatnm}}</td>
+
+        <td>{{s.minclassnm}}</td>
+
+        <td>{{s.placenm}}</td>
+
+        <td>{{s.areanm}}</td>
+
+        <td>{{s.rcptbgndt}}</td>
+
+        <td>{{s.rcptenddt}}</td>
+
+        <td>{{s.telno}}</td>
+
+        <td>{{s.payatnm}}</td>
+
+        <td>{{s.v_min}}</td>
+
+        <td>{{s.v_max}}</td>
+
+        <td>
+            <img src={{s.imgurl}} height="30px", width="30px">
+        </td>
+
+        <td>{{s.svcurl}}</td>
+    </tr>
+    {%endfor%}
+</table>
+</body>
+</html>

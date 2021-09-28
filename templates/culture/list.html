@@ -33,6 +33,11 @@
 <input type="checkbox" id="free" onclick="getFree(event)" >무료<br/>
 <input type="checkbox" id="ongoing" onclick="getOngoing(event)" >접수중<br/>
 <form action="/cul/search" method="post">
+    <select name="condition">
+        <option value="all">=====</option>
+        <option value="free">무료</option>
+        <option value="ongoing">접수중</option>
+    </select>
     <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요">
     <input type="submit" value="검색" >
 </form>
@@ -47,6 +52,7 @@
         <th>행사장소</th>
         <th>이용대상</th>
         <th>이미지</th>
+        <th>좌표</th>
     </tr>
     {%for c in culList%}
     <tr>
@@ -57,6 +63,7 @@
         <th>{{c.payAtNm}}</th>
         <th>{{c.placeNm}}</th>
         <th>{{c.useTgtInfo}}</th>
+        <th>{{c.x}},{{c.y}}</th>
         <th><img src={{c.imgUrl}} height="30px", width="30px"></th>
     </tr>
     {%endfor%}

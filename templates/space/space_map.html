@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=375195db5ac07f42a08c6c9f33e5f119"></script>
+
+</head>
+<body>
+    <div id="map" style="width:750px;height:350px;"></div>
+
+
+    {%for c in spaceList%}
+    <script>
+    var positions = [];
+    positions.push({
+            content: '<div style="padding:5px;">{{c.placenm}}</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            latlng: new kakao.maps.LatLng({{c.y}}, {{c.x}})
+    });
+    </script>
+    {%endfor%}
+
+	    <script>
+         for (var i = 0; i < positions.length; i++) {
+
+         var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		    mapOption = {
+		        center:positions[i].latlng, // 지도의 중심좌표
+		        level: 6, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    };
+
+            // 지도를 생성한다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+            // 지도 타입 변경 컨트롤을 생성한다
+            var mapTypeControl = new kakao.maps.MapTypeControl();
+            // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+            map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+            // 지도에 확대 축소 컨트롤을 생성한다
+            var zoomControl = new kakao.maps.ZoomControl();
+            // 지도의 우측에 확대 축소 컨트롤을 추가한다
+            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: positions[i].latlng // 마커의 위치
+            });
+
+            // 마커에 표시할 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: positions[i].content // 인포윈도우에 표시할 내용
+            });
+
+            // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+            // 이벤트 리스너로는 클로저를 만들어 등록합니다
+            // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+            kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        } //for문 끝
+
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+        </script>
+
+<table border="1">
+
+    <tr>
+        <th>접수 상태</th>
+        <th>장소 종류</th>
+        <th>이름</th>
+        <th>지역</th>
+        <th>접수 시작 일시</th>
+        <th>접수 종료 일시</th>
+        <th>전화번호</th>
+        <th>결제 방법</th>
+        <th>서비스이용 시작시간</th>
+        <th>서비스이용 종료시간</th>
+        <th>이미지</th>
+        <th>링크</th>
+    </tr>
+
+        {%for s in spaceList %}
+        <tr>
+            <td>{{s.svcstatnm}}</td>
+
+            <td>{{s.minclassnm}}</td>
+
+            <td> {{s.placenm}}</a></td>
+
+            <td>{{s.areanm}}</td>
+
+            <td>{{s.rcptbgndt}}</td>
+
+            <td>{{s.rcptenddt}}</td>
+
+            <td>{{s.telno}}</td>
+
+            <td>{{s.payatnm}}</td>
+
+            <td>{{s.v_min}}</td>
+
+            <td>{{s.v_max}}</td>
+
+            <td>{{s.svcurl}}</td>
+
+        </tr>
+        {% endfor %}
+</table>
+
+</body>
+</html>

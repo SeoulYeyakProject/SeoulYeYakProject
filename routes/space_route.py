@@ -33,3 +33,9 @@ def spaceType():
     spaceList = service.spaceType(type)
 
     return render_template('space/space_home.html', spaceList=spaceList)
+
+#지도
+@bp.route('/detail/<string:svcid>')
+def detail(svcid):
+    spaceList = service.getSpaceDetail(svcid)
+    return render_template('space/space_map.html', spaceList=spaceList)

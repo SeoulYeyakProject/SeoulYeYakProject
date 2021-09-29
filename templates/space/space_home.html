@@ -84,36 +84,44 @@
         <th>링크</th>
     </tr>
 
- {%for s in spaceList%}
-    <tr>
+    {% if spaceList|length > 0 %}
+        {%for s in spaceList %}
+        <tr>
+            <td>{{s.svcstatnm}}</td>
 
-        <td>{{s.svcstatnm}}</td>
+            <td>{{s.minclassnm}}</td>
 
-        <td>{{s.minclassnm}}</td>
+            <td> <a href="/space/detail/{{s.svcid}}">{{s.placenm}}</a></td>
 
-        <td>{{s.placenm}}</td>
+            <td>{{s.areanm}}</td>
 
-        <td>{{s.areanm}}</td>
+            <td>{{s.rcptbgndt}}</td>
 
-        <td>{{s.rcptbgndt}}</td>
+            <td>{{s.rcptenddt}}</td>
 
-        <td>{{s.rcptenddt}}</td>
+            <td>{{s.telno}}</td>
 
-        <td>{{s.telno}}</td>
+            <td>{{s.payatnm}}</td>
 
-        <td>{{s.payatnm}}</td>
+            <td>{{s.v_min}}</td>
 
-        <td>{{s.v_min}}</td>
+            <td>{{s.v_max}}</td>
 
-        <td>{{s.v_max}}</td>
+            <td>
+                <img src={{s.imgurl}} height="30px", width="30px">
+            </td>
 
-        <td>
-            <img src={{s.imgurl}} height="30px", width="30px">
-        </td>
+            <td>{{s.svcurl}}</td>
 
-        <td>{{s.svcurl}}</td>
-    </tr>
-    {%endfor%}
+             <td>{{s.x}}</td>
+
+             <td>{{s.y}}</td>
+        </tr>
+        {% endfor %}
+
+    {% else %}
+    <tr><td colspan="12">검색 결과가 없습니다.</td></tr></tr>
+    {% endif %}
 </table>
 </body>
 </html>

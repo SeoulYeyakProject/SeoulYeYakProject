@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 class Space:
-    def __init__(self, svcstatnm=None, maxclassnm=None, minclassnm=None, placenm=None, payatnm=None, svcurl=None, rcptbgndt=None, rcptenddt=None, areanm=None, telno=None, v_min=None, v_max=None, imgurl=None):
+    def __init__(self, svcid =None, svcstatnm=None, maxclassnm=None, minclassnm=None, placenm=None, payatnm=None, svcurl=None, rcptbgndt=None, rcptenddt=None, areanm=None, telno=None, v_min=None, v_max=None, imgurl=None, x=None, y=None):
+        self.svcid = svcid
         self.svcstatnm = svcstatnm #서비스상태
         self.maxclassnm = maxclassnm #대분류명
         self.minclassnm = minclassnm #소분류명
@@ -16,6 +17,8 @@ class Space:
         self.v_min = v_min #서비스이용 시작시간
         self.v_max = v_max #서비스이용 종료시간
         self.imgurl = imgurl
+        self.x = x
+        self.y = y
 
 class SpaceService:
     def __init__(self):
@@ -30,6 +33,7 @@ class SpaceService:
         spaceList = []
 
         for root in items:
+            svcid = root.find('svcid').string
             svcstatnm = root.find('svcstatnm').string
             maxclassnm = root.find('maxclassnm').string
             minclassnm = root.find('minclassnm').string
@@ -43,11 +47,13 @@ class SpaceService:
             v_min = root.find('v_min').string
             v_max = root.find('v_max').string
             imgurl = root.find('imgurl').string
+            x = root.find('x').string
+            y = root.find('y').string
 
-            spaceList.append(Space(svcstatnm=svcstatnm, maxclassnm=maxclassnm, minclassnm=minclassnm,
+            spaceList.append(Space(svcid=svcid, svcstatnm=svcstatnm, maxclassnm=maxclassnm, minclassnm=minclassnm,
                                    placenm=placenm, payatnm=payatnm, svcurl=svcurl, rcptbgndt=rcptbgndt,
                                    rcptenddt=rcptenddt, areanm=areanm, telno=telno, v_min=v_min, v_max=v_max,
-                                   imgurl=imgurl))
+                                   imgurl=imgurl, x=x, y=y))
         return spaceList
 
     def search(self, userSearch):
@@ -76,6 +82,16 @@ class SpaceService:
 
         for s in spaceList:
             if type in s.minclassnm:
+                searchList.append(s)
+
+        return searchList
+
+    def getSpaceDetail(self, svcid):
+        spaceList = self.getSpaceList()
+        searchList = []
+
+        for s in spaceList:
+            if svcid in s.svcid:
                 searchList.append(s)
 
         return searchList

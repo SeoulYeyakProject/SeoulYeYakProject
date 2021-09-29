@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>교육 | 공공서비스 리스트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+    </style>
+    <script type="text/javascript">
+    function selectInfo(){
+        var selectList = document.getElementById('condition')
+        if(selectList.options[selectList.selectedIndex].value == "class") {
+            location.href='/edu/search/class";
+            }
+        if(selectList.options[selectList.selectedIndex].value == "svc") {
+            location.href='/edu/search/svc";
+            }
+        if(selectList.options[selectList.selectedIndex].value == "place") {
+            location.href='/edu/search/place";
+            }
+        if(selectList.options[selectList.selectedIndex].value == "target") {
+            location.href='/edu/search/target";
+            }
+        }
+     </script>
+     <script>
+        function free(){
+            location.href='http://127.0.0.1:5000/edu/free'
+        }
+
+        function active(){
+            location.href='http://127.0.0.1:5000/edu/active'
+        }
+
+    </script>
+	</head>
+
+<body>
+
+<nav class="bg-dark navbar-dark">
+  <div class="container">
+    <a href="/" class="navbar-brand"><i class="fas fa-tree mr-2"></i>서울예약</a>
+  </div>
+  </nav>
+   <section id="header" class="text-center">
+       <h3 style="margin-top:2%" class="display-4"><a href="/edu/eduinfo"> 교육 프로그램</a></h3>
+       {% for n in nlist %}
+       <p class="lead">현재 접수중인 프로그램은 총 {{len(nlist)}} 입니다.</p>
+       {% endfor %}
+    <div style="text-align:center">
+        <input type="checkbox" id="free" onclick="free()">무료<br/>
+        <input type="checkbox" id="ongoing" onclick="active()">접수중<br/>
+    </div>
+
+<form style="text-align:center" action="/edu/search" method="post">
+      <select class="condition" id="condition" name="condition">
+          <option value="all">----</option>
+          <option value="class">분류</option>
+          <option value="svc">행사명</option>
+          <option value="place">장소명</option>
+          <option value="target">이용대상</option>
+      </select>
+        <input type="text" id="keyword" name="keyword">
+        <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="검색">
+    </form>
+</section>
+
+<!--    <form style="text-align:center" action="/edu/edu-info/now" method="post">-->
+<!--        <input type="text" id="nowon" name="nowon">-->
+<!--    <input type="submit" value="검색">-->
+<!--    </form>-->
+<!--    현재 접수중인 프로그램은 총 개 입니다.-->
+
+<section class="ftco-section">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="text-center mb-4"></h4>
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+					        <th>No</th>
+                            <th>분류</th>
+                            <th>상태</th>
+                            <th>행사명</th>
+                            <th>이용요금</th>
+                            <th>행사장소</th>
+                            <th>이용대상</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+                        {% for e in eduInfo %}
+					      <tr>
+                              <th scope="row" class="scope">{{loop.index}}</th>
+                              <th>{{e.MINCLASSNM}}</th>
+                              <th>{{e.SVCSTATNM}}</th>
+                              <th><a href="{{e.SVCURL}}">{{e.SVCNM}}</a></th>
+                              <th>{{e.PAYATNM}}</th>
+                              <th>{{e.PLACENM}}</th>
+                              <th>{{e.USETGTINFO}}</th>
+					      </tr>
+                        {% endfor %}
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+	</section>
+
+</body>
+</html>
+

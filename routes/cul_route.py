@@ -25,6 +25,7 @@ def getByKeyword():
     keyword = request.form['keyword']
     culList = service.getByKeyword(keyword)
     return render_template('culture/list.html', culList=culList)
+<<<<<<< Updated upstream
 
 @bp.route('/map')
 def getMap():
@@ -37,3 +38,5 @@ def search():
     keyword = request.form['keyword']
     culList = service.getByCondition(condition, keyword)
     return render_template('culture/list.html', culList=culList)
+=======
+>>>>>>> Stashed changes

@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect
 
 import routes.space_route as sp
 import routes.cul_route as cul
+import routes.ph_routes as pp
 
 
 import routes.space_route as sp
@@ -12,6 +13,7 @@ app = Flask(__name__)
 app.register_blueprint(sp.bp)
 app.register_blueprint(er.bp)
 app.register_blueprint(cul.bp)
+app.register_blueprint(pp.bp)
 
 
 @app.route('/')

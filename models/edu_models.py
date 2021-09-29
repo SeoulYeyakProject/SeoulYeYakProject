@@ -21,7 +21,7 @@ class EduService:
     def __init__(self):
         self.base_url='http://openAPI.seoul.go.kr:8088/'
         self.api_key='7670445453746a6436386250476b75'
-        self.cmd='/xml/ListPublicReservationEducation/1/100/'
+        self.cmd='/xml/ListPublicReservationEducation/1/30/'
 
     # route_id을 받아서 정보 검색은 open-api에 요청
     # 요청에 대한 응답으로 xml 받음

@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>교육 | 공공서비스 리스트</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    <style>
+    <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>교육 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/price_rangs.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+     <style>
         * {
         font-family: 'IBM Plex Sans KR', sans-serif;
+        bgcolor: white;
         }
     </style>
-    <script type="text/javascript">
-    function selectInfo(){
-        var selectList = document.getElementById('condition')
-        if(selectList.options[selectList.selectedIndex].value == "class") {
-            location.href='/edu/search/class";
-            }
-        if(selectList.options[selectList.selectedIndex].value == "svc") {
-            location.href='/edu/search/svc";
-            }
-        if(selectList.options[selectList.selectedIndex].value == "place") {
-            location.href='/edu/search/place";
-            }
-        if(selectList.options[selectList.selectedIndex].value == "target") {
-            location.href='/edu/search/target";
-            }
-        }
-     </script>
      <script>
         function free(){
             location.href='http://127.0.0.1:5000/edu/free'
@@ -43,77 +41,191 @@
     </script>
 	</head>
 
-<body>
+<body bgcolor="white">
+<!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="culture/list">문화행사</a></li>
+                                            <li><a href="/edu/eduinfo">교육</a></li>
+                                            <li><a href="#">공간대여</a></li>
+                                            <li><a href="#">체육시설</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+ <!-- Hero Start-->
+        <div class="hero-area3 hero-overly2 d-flex align-items-center ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="hero-cap text-center pt-50 pb-20">
+                            <h2><a href="#">교육 프로그램</a></h2>
+                        </div>
+                        <!--Hero form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero End -->
+<!-- listing Area Start -->
+        <div class="listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <h4>조건 검색</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Category Listing start -->
+                        <div class="category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
+                                <form action="/edu/search" method="post">
+                                <!-- Select job items start -->
+                                <div class="select-job-items1">
+                                    <select class="condition" id="condition" name="condition">
+                                        <option value="all">----</option>
+                                        <option value="class">분류</option>
+                                        <option value="svc">행사명</option>
+                                        <option value="place">장소명</option>
+                                        <option value="target">이용대상</option>
+                                    </select>
+                                </div>
+                                <!-- input -->
+                                <div class="input-form">
+                                    <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" style="font-size:15px;">
+                                </div>
+                                <div class="single-listing">
+                                <input class="btn list-btn mt-20" type="submit" value="검색" style="background-color:#ff3d1c; color:white;">
+                                </div>
+                                <br>
+                                <hr>
+                                    <label class="container">무료
+                                        <input type="checkbox" id="free" onchange="window.location.href='http://127.0.0.1:5000/edu/free'"><br/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">접수중
+                                        <input type="checkbox" id="ongoing" onclick="active()"><br/>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-<nav class="bg-dark navbar-dark">
-  <div class="container">
-    <a href="/" class="navbar-brand"><i class="fas fa-tree mr-2"></i>서울예약</a>
-  </div>
-  </nav>
-   <section id="header" class="text-center">
-       <h3 style="margin-top:2%" class="display-4"><a href="/edu/eduinfo"> 교육 프로그램</a></h3>
-       {% for n in nlist %}
-       <p class="lead">현재 접수중인 프로그램은 총 {{len(nlist)}} 입니다.</p>
-       {% endfor %}
-    <div style="text-align:center">
-        <input type="checkbox" id="free" onclick="free()">무료<br/>
-        <input type="checkbox" id="ongoing" onclick="active()">접수중<br/>
+                                <!--  Select job items End-->
+                                </form>
+
+                                <!--  Select job items End-->
+                            </div>
+                        </div>
+                        <!-- Job Category Listing End -->
+                    </div>
+
+<!-- Right content -->
+                    <div class="col-xl-8 col-lg-8 col-md-6">
+                        <!-- listing Details Stat-->
+                        <div class="listing-details-area">
+                            <div class="container">
+                                <div class="row">
+
+                                    {%for e in eduInfo%}
+                                    <div class="col-lg-6 ">
+                                        <div class="single-listing mb-30">
+                                            <div class="list-img">
+                                                <img src="{{e.IMGURL}}" style="height:200px; width:400px">
+                                                <!-- <span>Open</span> -->
+                                            </div>
+                                            <div class="list-caption">
+                                                <span>{{e.SVCSTATNM}}</span>
+                                                <h5><a href={{e.SVCURL}}>{{e.SVCNM}}</a></h5>
+                                                <p>{{e.USETGTINFO}}</p>
+                                                <p>{{e.PLACENM}}</p>
+                                                <div class="list-footer">
+                                                    <ul>
+                                                        <li>{{e.MINCLASSNM}}</li>
+                                                        <li>{{e.PAYATNM}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- listing Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 
-<form style="text-align:center" action="/edu/search" method="post">
-      <select class="condition" id="condition" name="condition">
-          <option value="all">----</option>
-          <option value="class">분류</option>
-          <option value="svc">행사명</option>
-          <option value="place">장소명</option>
-          <option value="target">이용대상</option>
-      </select>
-        <input type="text" id="keyword" name="keyword">
-        <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="검색">
-    </form>
-</section>
 
-<!--    <form style="text-align:center" action="/edu/edu-info/now" method="post">-->
-<!--        <input type="text" id="nowon" name="nowon">-->
-<!--    <input type="submit" value="검색">-->
-<!--    </form>-->
-<!--    현재 접수중인 프로그램은 총 개 입니다.-->
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{url_for('static', filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{url_for('static', filename='js/jquery.slicknav.min.js')}}"></script>
 
-<section class="ftco-section">
-			<div class="row">
-				<div class="col-md-12">
-					<h4 class="text-center mb-4"></h4>
-					<div class="table-wrap">
-						<table class="table">
-					    <thead class="thead-primary">
-					      <tr>
-					        <th>No</th>
-                            <th>분류</th>
-                            <th>상태</th>
-                            <th>행사명</th>
-                            <th>이용요금</th>
-                            <th>행사장소</th>
-                            <th>이용대상</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-                        {% for e in eduInfo %}
-					      <tr>
-                              <th scope="row" class="scope">{{loop.index}}</th>
-                              <th>{{e.MINCLASSNM}}</th>
-                              <th>{{e.SVCSTATNM}}</th>
-                              <th><a href="{{e.SVCURL}}">{{e.SVCNM}}</a></th>
-                              <th>{{e.PAYATNM}}</th>
-                              <th>{{e.PLACENM}}</th>
-                              <th>{{e.USETGTINFO}}</th>
-					      </tr>
-                        {% endfor %}
-					    </tbody>
-					  </table>
-					</div>
-				</div>
-			</div>
-	</section>
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/price-range.js')}}"></script>
+		<script src="{{url_for('static', filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+
+		<!-- Nice-select, sticky -->
+        <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+		<script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
+
+        <!-- contact js -->
+        <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{url_for('static', filename='js/plugins.js')}}">></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>
 </html>

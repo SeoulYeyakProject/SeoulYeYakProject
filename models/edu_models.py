@@ -154,3 +154,12 @@ class EduService:
             return result
 
 
+    #메인검색
+    def getBySvc(self, userSearch):
+        eduInfo = self.getInfo()
+        eduList = []
+        for e in eduInfo:
+            if userSearch in e.SVCNM:
+                result.append(e)
+        return result
+

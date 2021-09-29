@@ -16,26 +16,31 @@ bp = Blueprint('edu', __name__, url_prefix='/edu')
 #     edu = service.getInfoByMinClass(MINCLASSNM=MINCLASSNM)
 #     return render_template('edu/eduinfo.html', edu=edu)
 
+#전체 조회
 @bp.route('/eduinfo')
 def getInfo():
     eduInfo = service.getInfo()
     return render_template('edu/eduinfo.html', eduInfo=eduInfo)
 
+#무료 조회
 @bp.route('/free')
 def getFree():
     eduInfo = service.getInfoFree()
     return render_template('edu/eduinfo.html', eduInfo=eduInfo)
 
+#접수중 조회
 @bp.route('/active')
 def getOngoing():
     eduInfo = service.getInfoActive()
     return render_template('edu/eduinfo.html', eduInfo=eduInfo)
 
+#현재 접수중인 프로그램 개수
 @bp.route('/eduinfo')
 def getNow():
     nlist = service.getByNow()
     return render_template('edu/eduinfo.html', nlist=nlist)
 
+#조건검색
 @bp.route('/search', methods=['POST'])
 def search():
     condition = request.form['condition']
@@ -43,6 +48,12 @@ def search():
     eduInfo = service.getByCondition(condition, keyword)
     return render_template('edu/eduinfo.html', eduInfo=eduInfo)
 
+#메인검색
+@bp.route('/main', methods=['POST'])
+def eduMain():
+    userSearch = request.form['userSearch']
+    eduInfo = service.getBySvc(userSearch)
+    return render_template('edu/eduinfo.html', eduInfo=eduInfo)
 
 @bp.route("/edu-info")
 def board_list():

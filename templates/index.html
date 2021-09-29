@@ -33,8 +33,8 @@
                 condition.action="/space/search";
             }
 
-            elif(select=="culture"){
-                condition.action="/culture/keyword/"+key;
+            elif(select == "culture"){
+                location.href="/culture/keyword/"+key;
             }
 
             alert(select);
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="search-form">
-                                    <a href="#"  onclick="submit(); return false;">Search</a>
+                                    <a href="javascript:submit()"  onclick="submit(); return false;">Search</a>
                                 </div>
                             </form>
                         </div>

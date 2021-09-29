@@ -1,25 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script>
-        function getFree(e){
-            if(e.target.checked){
-                location.href = "/ph/free/{{names[0].minClass}}"
-                id.checked=true
-            }
-            else{
-                location.href = "/ph/phinfo"
-                id.checked=false
-            }
-        }
-    </script>
     <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Directory HTML-5 Template </title>
+        <title>체육시설</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
 
 		<!-- CSS here -->
@@ -35,9 +22,31 @@
             <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css') }}">
             <link rel="stylesheet" href="{{url_for('static', filename='css/nice-select.css') }}">
             <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-<header>
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+     <style>
+        * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+        bgcolor: white;
+        }
+    </style>
+     <script>
+        function getFree(e){
+            if(e.target.checked){
+                location.href = "/ph/free/{{names[0].minClass}}"
+                id.checked=true
+            }
+            else{
+                location.href = "/ph/phinfo"
+                id.checked=false
+            }
+        }
+
+    </script>
+	</head>
+
+<body bgcolor="white">
+<!-- Preloader Start -->
+    <header>
         <!-- Header Start -->
        <div class="header-area header-transparent">
             <div class="main-header">
@@ -55,23 +64,11 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="catagori.html">Catagories</a></li>
-                                            <li><a href="listing.html">Listing</a></li>
-                                            <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog_details.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="listing_details.html">Listing details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li class="add-list"><a href="listing_details.html"><i class="ti-plus"></i> add Listing</a></li>
-                                            <li class="login"><a href="#">
-                                                <i class="ti-user"></i> Sign in or Register</a>
-                                            </li>
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="culture/list">문화행사</a></li>
+                                            <li><a href="/edu/eduinfo">교육</a></li>
+                                            <li><a href="#">공간대여</a></li>
+                                            <li><a href="/ph/phmain">체육시설</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -86,29 +83,48 @@
             </div>
        </div>
         <!-- Header End -->
-    </header></br></br></br></br></br>
-<main>
-
-        <!-- Hero Start-->
+    </header>
+ <!-- Hero Start-->
         <div class="hero-area3 hero-overly2 d-flex align-items-center ">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-9">
                         <div class="hero-cap text-center pt-50 pb-20">
-                            <h2>{{names[0].minClass}} 시설 정보</h2>
+                            <h2><a href="#">{{names[0].minClass}} 시설 정보</a></h2>
                         </div>
                         <!--Hero form -->
-
                     </div>
                 </div>
             </div>
         </div>
-    </main></br></br>
+        <!--Hero End -->
+<!-- listing Area Start -->
+        <div class="listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <h4>조건 검색</h4>
+                                </div>
+                            </div>
+                        </div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="checkbox" id="free" onclick="getFree(event)">무료<br/>
+                            <div class="single-listing">
+                                <hr>
+                                    <input type="checkbox" id="free" onclick="getFree(event)" >무료<br/>
+                            </div>
+                    </div>
 
-<table border="1" width="1300" align="center">
+<!-- Right content -->
+                    <div class="col-xl-8 col-lg-8 col-md-6">
+                        <!-- listing Details Stat-->
+                        <div class="listing-details-area">
+                            <div class="container">
+                                <div class="row">
+<table border="1" width="1000">
     <tr>
         <th>시설명</th>
         <th>서비스상태</th>
@@ -127,6 +143,54 @@
         <th>{{ph.tel}}</th>
     </tr>
     {% endfor %}
-</table>
+    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- listing Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{url_for('static', filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{url_for('static', filename='js/jquery.slicknav.min.js')}}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/price-range.js')}}"></script>
+		<script src="{{url_for('static', filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+
+		<!-- Nice-select, sticky -->
+        <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+		<script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
+
+        <!-- contact js -->
+        <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{url_for('static', filename='js/plugins.js')}}">></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
 </body>
 </html>

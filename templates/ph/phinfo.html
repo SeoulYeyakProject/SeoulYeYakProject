@@ -125,7 +125,15 @@
                             <div class="container">
                                 <div class="row">
 <table border="1" width="1000">
-                                    {% for ph in names %}
+    <tr>
+        <th>시설명</th>
+        <th>서비스상태</th>
+        <th>결제방법</th>
+        <th>지역구</th>
+        <th>장소명</th>
+        <th>전화번호</th>
+    </tr>
+    {% for ph in names %}
     <tr>
         <th>{{ph.minClass}}</th>
         <th>{{ph.tat}}</th>

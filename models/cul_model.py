@@ -85,38 +85,6 @@ class CulService:
                     result.append(c)
             return result
 
-    def getByGeo(self):
-        url = self.base_url + self.api_key + '/xml/ListPublicReservationCulture/1/231/'
-        xml = requests.get(url).text
-        root = BeautifulSoup(xml, 'lxml-xml')
-        code = root.find('CODE').text
-        culList = []
-        if code == 'INFO-000':
-            rows = root.select('row')
-            for r in rows:
-                minClassNm = r.find('MINCLASSNM').text
-                svcStateNm = r.find('SVCSTATNM').text
-                svcNm = r.find('SVCNM').text
-
-                svcNm = svcNm.replace('&#39;', '')
-                svcNm = svcNm.replace('&quot;', '')
-                svcNm = svcNm.replace('&uarr;', '')
-                svcNm = svcNm.replace('&lt;', '')
-                svcNm = svcNm.replace('&gt;', '')
-                svcNm = svcNm.replace('& amp;', '')
-
-                payAtNm = r.find('PAYATNM').text
-                placeNm = r.find('PLACENM').text
-                useTgtInfo = r.find('USETGTINFO').text
-                svcUrl = r.find('SVCURL').text
-                x = r.find('X').text
-                y = r.find('Y').text
-                culList.append(Culture(minClassNm=minClassNm, svcStateNm=svcStateNm, svcNm=svcNm, payAtNm=payAtNm,
-                                       placeNm=placeNm, useTgtInfo=useTgtInfo, svcUrl=svcUrl, x=x, y=y))
-            return culList
-
-        else:
-            print(root.find('RESULT').text)
 
     def getByCondition(self, condition, keyword):
         if condition == 'free':

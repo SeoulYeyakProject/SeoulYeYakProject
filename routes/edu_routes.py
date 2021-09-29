@@ -1,7 +1,7 @@
 import math
 import sqlite3
 
-import mongo as mongo
+
 from flask import Flask, request, render_template, redirect, Blueprint,session
 
 

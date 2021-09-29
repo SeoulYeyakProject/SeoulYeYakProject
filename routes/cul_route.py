@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 from models import cul_model as m
 
-bp = Blueprint('cul', __name__, url_prefix='/cul')
+bp = Blueprint('cul', __name__, url_prefix='/culture')
 
 service = m.CulService()
 
@@ -28,12 +28,12 @@ def getByKeyword():
 
 @bp.route('/map')
 def getMap():
-    culList = service.getByGeo()
+    culList = service.getList()
     return render_template('culture/mapK.html', culList=culList)
 
 @bp.route('/search', methods=['POST'])
 def search():
-    condition = request.form['condition']
+    condition = request.form['select1']
     keyword = request.form['keyword']
     culList = service.getByCondition(condition, keyword)
     return render_template('culture/list.html', culList=culList)

@@ -1,73 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>서울 공공서비스</title>
-    <script>
-        function getFree(e){
-            if(e.target.checked){
-                location.href = "/cul/free"
-                id.checked=true
-            }
-            else{
-                location.href = "/cul/list"
-                id.checked=false
-            }
-        }
 
-        function getOngoing(e){
-            if(e.target.checked){
-                location.href = "/cul/ongoing"
-                id.checked=true
-            }
-            else{
-                location.href = "/cul/list"
-                id.checked=false
-            }
-        }
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Directory HTML-5 Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
 
-    </script>
-</head>
-<body>
-<h3>서울시 문화행사</h3>
-<input type="checkbox" id="free" onclick="getFree(event)" >무료<br/>
-<input type="checkbox" id="ongoing" onclick="getOngoing(event)" >접수중<br/>
-<form action="/cul/search" method="post">
-    <select name="condition">
-        <option value="all">=====</option>
-        <option value="free">무료</option>
-        <option value="ongoing">접수중</option>
-    </select>
-    <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요">
-    <input type="submit" value="검색" >
-</form>
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/price_rangs.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
+   </head>
 
-<table border="1">
-    <tr>
-        <th>No</th>
-        <th>분류</th>
-        <th>상태</th>
-        <th>행사명</th>
-        <th>이용요금</th>
-        <th>행사장소</th>
-        <th>이용대상</th>
-        <th>이미지</th>
-        <th>좌표</th>
-    </tr>
-    {%for c in culList%}
-    <tr>
-        <th>{{loop.index}}</th>
-        <th>{{c.minClassNm}}</th>
-        <th>{{c.svcStateNm}}</th>
-        <th><a href={{c.svcUrl}}>{{c.svcNm}}</a></th>
-        <th>{{c.payAtNm}}</th>
-        <th>{{c.placeNm}}</th>
-        <th>{{c.useTgtInfo}}</th>
-        <th>{{c.x}},{{c.y}}</th>
-        <th><img src={{c.imgUrl}} height="30px", width="30px"></th>
-    </tr>
-    {%endfor%}
-</table>
+   <body>
+
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="catagori.html">Catagories</a></li>
+                                            <li><a href="listing.html">Listing</a></li>
+                                            <li><a href="#">Page</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="blog_details.html">Blog Details</a></li>
+                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="listing_details.html">Listing details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li class="add-list"><a href="listing_details.html"><i class="ti-plus"></i> add Listing</a></li>
+                                            <li class="login"><a href="#">
+                                                <i class="ti-user"></i> Sign in or Register</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+    <main>
+
+        <!-- Hero Start-->
+        <div class="hero-area3 hero-overly2 d-flex align-items-center ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="hero-cap text-center pt-50 pb-20">
+                            <h2>Our Listing</h2>
+                        </div>
+                        <!--Hero form -->
+                        <form action="#" class="search-box search-box2">
+                            <div class="input-form">
+                                <input type="text" placeholder="What are you looking for?">
+                            </div>
+                            <div class="select-form">
+                                <div class="select-itms">
+                                    <select name="select" id="select1">
+                                        <option value="">All Catagories</option>
+                                        <option value="">Catagories One</option>
+                                        <option value="">Catagories Two</option>
+                                        <option value="">Catagories Three</option>
+                                        <option value="">Catagories Four</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Search box -->
+                            <div class="search-form">
+                                <a href="#">Search</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero End -->
+        <!-- listing Area Start -->
+        <div class="listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <h4>조건 검색</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Category Listing start -->
+                        <div class="category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
+                                <form action="/culture/search" method="post">
+                                <!-- Select job items start -->
+                                <div class="select-job-items1">
+                                    <select name="select1">
+                                        <option value="">=전체=</option>
+                                        <option value="free">무료</option>
+                                        <option value="ongoing">접수중</option>
+                                    </select>
+                                </div>
+                                <!-- input -->
+                                <div class="input-form">
+                                    <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" style="font-size:15px;">
+                                </div>
+                                <div class="single-listing">
+                                <input class="btn list-btn mt-20" type="submit" value="검색" style="background-color:#ff3d1c; color:white;">
+                                </div>
+                                <!--  Select job items End-->
+                                </form>
+
+                                <!--  Select job items End-->
+                            </div>
+                        </div>
+                        <!-- Job Category Listing End -->
+                    </div>
+                    <!-- Right content -->
+                    <div class="col-xl-8 col-lg-8 col-md-6">
+                        <!-- listing Details Stat-->
+                        <div class="listing-details-area">
+                            <div class="container">
+                                <div class="row">
+                                    {%for c in culList%}
+                                    <div class="col-lg-6 ">
+                                        <div class="single-listing mb-30">
+                                            <div class="list-img">
+                                                <img src={{c.imgUrl}} alt={{c.svcNm}} style="height:200px; width:400px">
+                                                <!-- <span>Open</span> -->
+                                            </div>
+                                            <div class="list-caption">
+                                                <span>{{c.svcStateNm}}</span>
+                                                <h5><a href={{c.svcUrl}}>{{c.svcNm}}</a></h5>
+                                                <p>{{c.useTgtInfo}}</p>
+                                                <div class="list-footer">
+                                                    <ul>
+                                                        <li>{{c.placeNm}}</li>
+                                                        <li>{{c.payAtNm}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- listing Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- listing-area Area End -->
+
+    </main>
+
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 
 
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{url_for('static', filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{url_for('static', filename='js/jquery.slicknav.min.js')}}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/price-range.js')}}"></script>
+		<script src="{{url_for('static', filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+
+		<!-- Nice-select, sticky -->
+        <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+		<script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
+
+        <!-- contact js -->
+        <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{url_for('static', filename='js/plugins.js')}}">></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+    </body>
 </html>

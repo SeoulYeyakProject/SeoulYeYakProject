@@ -20,12 +20,6 @@ def getOngoing():
     culList = service.getOngoing()
     return render_template('culture/list.html', culList=culList)
 
-@bp.route('/search1', methods=['POST'])
-def getByKeyword():
-    keyword = request.form['keyword']
-    culList = service.getByKeyword(keyword)
-    return render_template('culture/list.html', culList=culList)
-
 @bp.route('/map')
 def getMap():
     culList = service.getList()

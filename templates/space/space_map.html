@@ -2,12 +2,189 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>공간대여</title>
     <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=375195db5ac07f42a08c6c9f33e5f119"></script>
+    <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Directory HTML-5 Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/price_rangs.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
 
 </head>
 <body>
-    <div id="map" style="width:750px;height:350px;"></div>
+
+     <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="catagori.html">Catagories</a></li>
+                                            <li><a href="listing.html">Listing</a></li>
+                                            <li><a href="#">Page</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="blog_details.html">Blog Details</a></li>
+                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="listing_details.html">Listing details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li class="add-list"><a href="listing_details.html"><i class="ti-plus"></i> add Listing</a></li>
+                                            <li class="login"><a href="#">
+                                                <i class="ti-user"></i> Sign in or Register</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <main>
+        <!-- Hero Start-->
+        <div class="hero-area3 hero-overly2 d-flex align-items-center ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="hero-cap text-center pt-50 pb-20">
+                            <h2>Our Listing</h2>
+                        </div>
+                        <!--Hero form -->
+                        <form action="#" class="search-box search-box2">
+                            <div class="input-form">
+                                <input type="text" placeholder="What are you looking for?">
+                            </div>
+                            <div class="select-form">
+                                <div class="select-itms">
+                                    <select name="select" id="select1">
+                                        <option value="">All Catagories</option>
+                                        <option value="">Catagories One</option>
+                                        <option value="">Catagories Two</option>
+                                        <option value="">Catagories Three</option>
+                                        <option value="">Catagories Four</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Search box -->
+                            <div class="search-form">
+                                <a href="#">Search</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--텍스트-->
+     <div class="container">
+        <div class="row">
+            <h2 style="margin-top:5%; text-align:center;">상세 정보 </h2>
+
+            <table style="padding-top:5%; " class="table table-bordered success">
+                 {%for s in spaceList %}
+                    <thead>
+                        <tr >
+                            <th>장소 명</th>
+                            <td> {{s.placenm}}</td>
+                        </tr>
+                        <tr>
+                            <th class="info">지역</th>
+                            <td>{{s.areanm}}</td>
+                        </tr>
+                        <tr>
+                            <th class="info">장소 종류</th>
+                            <td>{{s.minclassnm}}</td>
+                        </tr>
+                        <tr>
+                            <th class="info">접수 상태</th>
+                            <td>{{s.svcstatnm}}</td>
+                        </tr>
+
+                        <tr>
+                            <th class="info">접수 시작 일시</th>
+                            <td>{{s.rcptbgndt}}</td>
+                        </tr>
+                        <tr>
+                            <th class="info">접수 종료 일시</th>
+                            <td>{{s.rcptenddt}}</td>
+                        </tr>
+                        <tr >
+                            <th class="info">결제 방법</th>
+                            <td>{{s.payatnm}}</td>
+                        </tr>
+                        <tr>
+                            <th valign="top" class="info">서비스이용 시작시간</th>
+                            <td>{{s.v_min}}</td>
+                        </tr>
+                        <tr>
+                            <th class="info">서비스이용 종료시간</th>
+                            <td>{{s.v_max}}</td>
+                        </tr>
+
+                        <tr>
+                            {% if s.svcstatnm == '접수중' %}
+                                <th colspan="2">
+                                    <a class="btn btn-success" style="color:white; margin-left:40%;" href="{{s.svcurl}}">예약하기</a>
+                                </th>
+                            {% else %}
+                                <th colspan="2">
+                                    <b style="margin-left:35%;">접수 불가 (접수 시기는 변동될 수 있습니다.)</b>
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    {% endfor %}
+                </table>
+        </div>
+
+         <br><br>
+         <div id="map" style="margin:0 auto; width:750px;height:350px; padding-bottom:20%"></div>
+         <br><br>
+    </div>
+     <!--지도 부분-->
+
 
 
     {%for c in spaceList%}
@@ -74,50 +251,39 @@
         }
         </script>
 
-<table border="1">
+        <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{url_for('static', filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src=".{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{url_for('static', filename='js/jquery.slicknav.min.js')}}"></script>
 
-    <tr>
-        <th>접수 상태</th>
-        <th>장소 종류</th>
-        <th>이름</th>
-        <th>지역</th>
-        <th>접수 시작 일시</th>
-        <th>접수 종료 일시</th>
-        <th>전화번호</th>
-        <th>결제 방법</th>
-        <th>서비스이용 시작시간</th>
-        <th>서비스이용 종료시간</th>
-        <th>이미지</th>
-        <th>링크</th>
-    </tr>
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/price-range.js')}}"></script>
+		<script src="{{url_for('static', filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
 
-        {%for s in spaceList %}
-        <tr>
-            <td>{{s.svcstatnm}}</td>
+		<!-- Nice-select, sticky -->
+        <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+		<script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
 
-            <td>{{s.minclassnm}}</td>
+        <!-- contact js -->
+        <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
 
-            <td> {{s.placenm}}</a></td>
-
-            <td>{{s.areanm}}</td>
-
-            <td>{{s.rcptbgndt}}</td>
-
-            <td>{{s.rcptenddt}}</td>
-
-            <td>{{s.telno}}</td>
-
-            <td>{{s.payatnm}}</td>
-
-            <td>{{s.v_min}}</td>
-
-            <td>{{s.v_max}}</td>
-
-            <td>{{s.svcurl}}</td>
-
-        </tr>
-        {% endfor %}
-</table>
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{url_for('static', filename='js/plugins.js')}}">></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>
 </html>

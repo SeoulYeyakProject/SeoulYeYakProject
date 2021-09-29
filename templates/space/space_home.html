@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>공간대여</title>
 
     <!-- CSS -->
     <head>
@@ -11,6 +11,8 @@
         <title>Directory HTML-5 Template </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
 
 		<!-- CSS here -->
@@ -30,7 +32,7 @@
 
 </head>
 <body>
-<h3>공간 대여 </h3>
+
     <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
@@ -83,125 +85,237 @@
         <!-- Header End -->
     </header>
 
+    <main>
+        <!-- Hero Start-->
+        <div class="hero-area3 hero-overly2 d-flex align-items-center ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="hero-cap text-center pt-50 pb-20">
+                            <h2>Our Listing</h2>
+                        </div>
+                        <!--Hero form -->
+                        <form action="#" class="search-box search-box2">
+                            <div class="input-form">
+                                <input type="text" placeholder="What are you looking for?">
+                            </div>
+                            <div class="select-form">
+                                <div class="select-itms">
+                                    <select name="select" id="select1">
+                                        <option value="">All Catagories</option>
+                                        <option value="">Catagories One</option>
+                                        <option value="">Catagories Two</option>
+                                        <option value="">Catagories Three</option>
+                                        <option value="">Catagories Four</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Search box -->
+                            <div class="search-form">
+                                <a href="#">Search</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <h4>조건 검색</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Category Listing start -->
+                        <div class="category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
+                                <form action="/space/search" method="POST">
+                                    <!-- Select job items start -->
+                                    <!-- input -->
+                                    <div class="input-form">
+                                        <label for ="userSearch">장소 검색</label>
+                                        <input type="text" id="userSearch" name="userSearch" placeholder="장소를 입력하세요." style="font-size:15px;">
+                                    </div>
+                                    <div class="single-listing">
+                                    <input class="btn list-btn mt-20" type="submit" value="장소 검색" style="background-color:#ff3d1c; color:white;">
+                                    </div>
+                                    <!--  Select job items End-->
+                                </form>
+
+                                <!--  Select job items End-->
+                            </div>
+                            <hr>
+                              <div class="single-listing">
+                                 <form action="/space/AreaSearch" method="POST">
+                                    <!-- Select job items start -->
+                                    <!-- input -->
+                                      <label for="area">지역 검색</label>
+                                    <div class="input-form">
+                                         <select name="area" id="area">
+                                            <option value="">원하는 지역을 고르세요</option>
+                                            <option value="종로구">종로구</option>
+                                            <option value="중구">중구</option>
+                                            <option value="용산구">용산구</option>
+                                            <option value="성동구">성동구</option>
+                                            <option value="광진구">광진구</option>
+                                            <option value="동대문구">동대문구</option>
+                                            <option value="중랑구">중랑구</option>
+                                            <option value="성북구">성북구</option>
+                                            <option value="강북구">강북구</option>
+                                            <option value="도봉구">도봉구</option>
+                                            <option value="노원구">노원구</option>
+                                            <option value="은평구">은평구</option>
+                                            <option value="서대문구">서대문구</option>
+                                            <option value="마포구">마포구</option>
+                                            <option value="양천구">양천구</option>
+                                            <option value="강서구">강서구</option>
+                                            <option value="구로구">구로구</option>
+                                            <option value="금천구">금천구</option>
+                                            <option value="영등포구">영등포구</option>
+                                            <option value="동작구">동작구</option>
+                                            <option value="관악구">관악구</option>
+                                            <option value="서초구">서초구</option>
+                                            <option value="강남구">강남구</option>
+                                            <option value="송파구">송파구</option>
+                                            <option value="강동구">강동구</option>
+                                        </select>
+                                    </div>
+                                    <div class="single-listing">
+                                    <input class="btn list-btn mt-20" type="submit" value="지역 검색" style="background-color:#ff3d1c; color:white;">
+                                    </div>
+                                    <!--  Select job items End-->
+                                </form>
+                                <!--  Select job items End-->
+                            </div>
+                            <hr>
+
+                                <div class="single-listing">
+                                <form action="/space/spaceType" method="POST">
+                                    <!-- Select job items start -->
+                                    <!-- input -->
+                                    <label for ="type">장소 종류 검색</label>
+                                    <div class="input-form">
+                                        <select name="type" id="type">
+                                            <option value="">장소 종류</option>
+                                            <option value="캠핑장">캠핑장</option>
+                                            <option value="다목적실">다목적실</option>
+                                            <option value="강의실">강의실</option>
+                                            <option value="강당">강당</option>
+                                            <option value="회의실">회의실</option>
+                                            <option value="주민공유공간">주민공유공간</option>
+                                            <option value="공연장">공연장</option>
+                                            <option value="녹화장소">녹화장소</option>
+                                             <option value="전시실">전시실</option>
+                                            <option value="광장">광장</option>
+                                            <option value="민원 등 기타">민원 등 기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="single-listing">
+                                    <input class="btn list-btn mt-20" type="submit" value="장소 종류 검색" style="background-color:#ff3d1c; color:white;">
+                                    </div>
+                                    <!--  Select job items End-->
+                                </form>
+
+                                <!--  Select job items End-->
+                            </div>
+                        </div>
 
 
+                        <!-- Job Category Listing End -->
+                    </div>
+                    <!-- Right content -->
+                    <div class="col-xl-8 col-lg-8 col-md-6">
+                        <!-- listing Details Stat-->
+                        <div class="listing-details-area">
+                            <div class="container">
+                                <div class="row">
+                                    {% if spaceList|length > 0 %}
+                                        {%for s in spaceList %}
+                                        <div class="col-lg-6 ">
+                                            <div class="single-listing mb-30">
+                                                <div class="list-img">
+                                                    <img src={{s.imgurl}} alt={{s.placenm}} style="height:200px; width:400px">
+                                                    <!-- <span>Open</span> -->
+                                                </div>
+                                                <div class="list-caption">
+                                                    <span>{{s.svcstatnm}}</span>
+                                                    <h5>{{s.placenm}}</h5>
+                                                    <p><b>{{s.areanm}} / {{s.minclassnm}}</b></p>
 
-<!-- 내가 쓴 부분-->
-<form action="/space/search" method="POST">
-    <input type="text" id="userSearch" name="userSearch" placeholder="검색어 입력">
-    <input type="submit" value="검색" >
-</form>
+                                                    <div class="list-footer">
+                                                        <ul>
+                                                            <li ><a style="color:black;" href="/space/detail/{{s.svcid}}">자세히</a></li>
+                                                            {% if s.svcstatnm != '접수중' %}
+                                                                <li>예약마감</li>
+                                                                {% else %}
+                                                                 <li ><a style="color:#1e90ff;" href="{{s.svcurl}}">예약하기</a></li>
+                                                            {% endif %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {%endfor%}
+                                    {% else %}
+                                    <h3 style="padding-left:30%; text-align:center;">검색 결과가 없습니다</h3>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- listing Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<br>
-<label for="area">지역 검색</label>
-<form action="/space/AreaSearch" method="POST">
-    <select name="area" id="area">
-        <option value="">원하는 지역을 고르세요</option>
-        <option value="종로구">종로구</option>
-        <option value="중구">중구</option>
-        <option value="용산구">용산구</option>
-        <option value="성동구">성동구</option>
-        <option value="광진구">광진구</option>
-        <option value="동대문구">동대문구</option>
-        <option value="중랑구">중랑구</option>
-        <option value="성북구">성북구</option>
-        <option value="강북구">강북구</option>
-        <option value="도봉구">도봉구</option>
-        <option value="노원구">노원구</option>
-        <option value="은평구">은평구</option>
-        <option value="서대문구">서대문구</option>
-        <option value="마포구">마포구</option>
-        <option value="양천구">양천구</option>
-        <option value="강서구">강서구</option>
-        <option value="구로구">구로구</option>
-        <option value="금천구">금천구</option>
-        <option value="영등포구">영등포구</option>
-        <option value="동작구">동작구</option>
-        <option value="관악구">관악구</option>
-        <option value="서초구">서초구</option>
-        <option value="강남구">강남구</option>
-        <option value="송파구">송파구</option>
-        <option value="강동구">강동구</option>
-    </select>
+    </main>
 
-     <input type="submit" value="검색" >
-</form>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 
-<form action="/space/spaceType" method="POST">
-    <select name="type" id="type">
-        <option value="">장소 종류</option>
-        <option value="캠핑장">캠핑장</option>
-        <option value="다목적실">다목적실</option>
-        <option value="강의실">강의실</option>
-        <option value="강당">강당</option>
-        <option value="회의실">회의실</option>
-        <option value="주민공유공간">주민공유공간</option>
-        <option value="공연장">공연장</option>
-        <option value="녹화장소">녹화장소</option>
-         <option value="전시실">전시실</option>
-        <option value="광장">광장</option>
-        <option value="민원 등 기타">민원 등 기타</option>
-    </select>
 
-     <input type="submit" value="검색" >
-</form>
-<br>
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{url_for('static', filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src=".{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{url_for('static', filename='js/jquery.slicknav.min.js')}}"></script>
 
-<table border="1">
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/price-range.js')}}"></script>
+		<script src="{{url_for('static', filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
 
-    <tr>
-        <th>접수 상태</th>
-        <th>장소 종류</th>
-        <th>이름</th>
-        <th>지역</th>
-        <th>접수 시작 일시</th>
-        <th>접수 종료 일시</th>
-        <th>전화번호</th>
-        <th>결제 방법</th>
-        <th>서비스이용 시작시간</th>
-        <th>서비스이용 종료시간</th>
-        <th>이미지</th>
-        <th>링크</th>
-    </tr>
+		<!-- Nice-select, sticky -->
+        <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+		<script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
 
-    {% if spaceList|length > 0 %}
-        {%for s in spaceList %}
-        <tr>
-            <td>{{s.svcstatnm}}</td>
+        <!-- contact js -->
+        <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
 
-            <td>{{s.minclassnm}}</td>
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{url_for('static', filename='js/plugins.js')}}">></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
-            <td> <a href="/space/detail/{{s.svcid}}">{{s.placenm}}</a></td>
-
-            <td>{{s.areanm}}</td>
-
-            <td>{{s.rcptbgndt}}</td>
-
-            <td>{{s.rcptenddt}}</td>
-
-            <td>{{s.telno}}</td>
-
-            <td>{{s.payatnm}}</td>
-
-            <td>{{s.v_min}}</td>
-
-            <td>{{s.v_max}}</td>
-
-            <td>
-                <img src={{s.imgurl}} height="30px", width="30px">
-            </td>
-
-            <td>{{s.svcurl}}</td>
-
-             <td>{{s.x}}</td>
-
-             <td>{{s.y}}</td>
-        </tr>
-        {% endfor %}
-
-    {% else %}
-    <tr><td colspan="12">검색 결과가 없습니다.</td></tr></tr>
-    {% endif %}
-</table>
 </body>
 </html>

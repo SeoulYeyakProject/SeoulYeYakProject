@@ -97,3 +97,14 @@ class CulService:
             culList = self.getList()
             result = self.getByKeyword(culList, keyword)
         return result
+
+    def homeSearch(self,keyword):
+        culList = self.getList()
+        result = []
+        if keyword == None:
+            return culList
+        else:
+            for c in culList:
+                if keyword in c.svcNm:
+                    result.append(c)
+            return result

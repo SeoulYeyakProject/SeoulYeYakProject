@@ -32,3 +32,8 @@ def search():
     culList = service.getByCondition(condition, keyword)
     return render_template('culture/list.html', culList=culList)
 
+@bp.route('/keyword/<string:keyword>')
+def keyword(keyword):
+    culList = service.homeSearch(keyword)
+    return render_template('culture/list.html', culList=culList)
+

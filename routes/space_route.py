@@ -43,5 +43,4 @@ def detail(svcid):
 #지도
 @bp.route('/test')
 def test():
-
     return render_template('space/space_test.html')

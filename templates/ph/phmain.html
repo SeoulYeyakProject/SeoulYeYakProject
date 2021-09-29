@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/ph/phinfo" method="post">
+    <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Directory HTML-5 Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/price_rangs.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="catagori.html">Catagories</a></li>
+                                            <li><a href="listing.html">Listing</a></li>
+                                            <li><a href="#">Page</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="blog_details.html">Blog Details</a></li>
+                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="listing_details.html">Listing details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li class="add-list"><a href="listing_details.html"><i class="ti-plus"></i> add Listing</a></li>
+                                            <li class="login"><a href="#">
+                                                <i class="ti-user"></i> Sign in or Register</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header></br></br></br></br></br>
+<main>
+
+        <!-- Hero Start-->
+        <div class="hero-area3 hero-overly2 d-flex align-items-center ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="hero-cap text-center pt-50 pb-20">
+                            <h2>체육시설 정보 검색</h2>
+                        </div>
+                        <!--Hero form -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main></br></br>
+<form>
+    확인할 체육시설 이름 : <input type="text" name="minClass">
+    <input type="submit" value="검색">
+</form>
+</body>
+</html>

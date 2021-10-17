@@ -23,7 +23,7 @@ class Culture:
 class CulService:
     def __init__(self):
         self.base_url = 'http://openAPI.seoul.go.kr:8088/'
-        self.api_key = '4c4c556a567375693633667243655a'
+        self.api_key = 'api_key입력'
 
     def getList(self):
         url = self.base_url+self.api_key+'/xml/ListPublicReservationCulture/1/231/'
